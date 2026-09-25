@@ -417,7 +417,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    z-index: 10;
+    z-index: 9999;
     background: rgba(0,0,0,0.5);
     padding: 0.5rem 1rem;
     border-radius: 30px;
@@ -481,6 +481,8 @@ body {
 }
 
 @media (max-width: 768px) {
+    .nav-controls { display: none !important; }
+
     .title-main { font-size: 2.5rem; }
     .title-section { font-size: 2rem; }
     .pillars, .grid-2, .pricing-container { grid-template-columns: 1fr; flex-direction: column; }

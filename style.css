@@ -488,3 +488,80 @@ body {
     .pillars, .grid-2, .pricing-container { grid-template-columns: 1fr; flex-direction: column; }
     .text-body { font-size: 1.2rem; }
 }
+
+/* Gerador de Animações (Pure CSS) */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* Likes (Corações subindo) */
+.particle-like {
+    color: var(--color-gold);
+    font-size: 2rem;
+    animation: floatUp 4s ease-in infinite;
+}
+
+/* Foguetes subindo */
+.particle-rocket {
+    font-size: 3rem;
+    animation: floatUpFast 3s ease-in infinite;
+}
+
+/* Luzes LED (Cyber/Neon) */
+.particle-led {
+    background: var(--color-gold);
+    width: 2px;
+    height: 100px;
+    box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.5);
+    animation: ledSweep 5s linear infinite;
+}
+
+/* Gráfico de Crescimento / Setas */
+.particle-arrow {
+    color: var(--color-green);
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: floatUpRight 4s ease-in-out infinite;
+}
+
+/* Estrelas / Premium */
+.particle-star {
+    color: var(--color-gold);
+    font-size: 1.5rem;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+}
+
+@keyframes floatUpFast {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+}
+
+@keyframes floatUpRight {
+    0% { transform: translate(-20vw, 100vh) rotate(45deg); opacity: 0; }
+    20% { opacity: 0.3; }
+    80% { opacity: 0.3; }
+    100% { transform: translate(50vw, -20vh) rotate(45deg); opacity: 0; }
+}
+
+@keyframes ledSweep {
+    0% { transform: translateX(-10vw) translateY(-100vh) rotate(45deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { transform: translateX(110vw) translateY(100vh) rotate(45deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}

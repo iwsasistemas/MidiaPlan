@@ -535,3 +535,92 @@ body {
     66% { transform: translate(-3vw, 8vh) scale(0.9); }
     100% { transform: translate(0, 0) scale(1); }
 }
+
+
+/* =========================================
+   ENTRANCE ANIMATIONS & HOVER EFFECTS
+   ========================================= */
+
+/* 1. Estado inicial (escondidos e deslocados para baixo) */
+.slide .content h1,
+.slide .content h2,
+.slide .content p,
+.slide .content ul,
+.slide .content .highlight-box,
+.slide .content .contact-info,
+.slide .content .roi-box,
+.slide .pillars .pillar,
+.slide .grid-2 .card,
+.slide .pricing-container .pricing-card,
+.slide .timeline .step {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Estado ativo (aparecendo suavemente quando o slide entra) */
+.slide.active .content h1,
+.slide.active .content h2,
+.slide.active .content p,
+.slide.active .content ul,
+.slide.active .content .highlight-box,
+.slide.active .content .contact-info,
+.slide.active .content .roi-box,
+.slide.active .pillars .pillar,
+.slide.active .grid-2 .card,
+.slide.active .pricing-container .pricing-card,
+.slide.active .timeline .step {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Delay em cascata (um elemento aparece após o outro) */
+.slide.active .content h1, 
+.slide.active .content h2 { transition-delay: 0.2s; }
+
+.slide.active .content p.subtitle, 
+.slide.active .content p.text-body,
+.slide.active .content .highlight-box { transition-delay: 0.4s; }
+
+.slide.active .content ul,
+.slide.active .content .contact-info,
+.slide.active .content .roi-box { transition-delay: 0.5s; }
+
+/* Cascata dos Cards / Pilares / Passos */
+.slide.active .pillars .pillar:nth-child(1),
+.slide.active .grid-2 .card:nth-child(1),
+.slide.active .pricing-container .pricing-card:nth-child(1),
+.slide.active .timeline .step:nth-child(1) { transition-delay: 0.4s; }
+
+.slide.active .pillars .pillar:nth-child(2),
+.slide.active .grid-2 .card:nth-child(2),
+.slide.active .pricing-container .pricing-card:nth-child(2),
+.slide.active .timeline .step:nth-child(2) { transition-delay: 0.55s; }
+
+.slide.active .pillars .pillar:nth-child(3),
+.slide.active .grid-2 .card:nth-child(3),
+.slide.active .timeline .step:nth-child(3) { transition-delay: 0.7s; }
+
+.slide.active .timeline .step:nth-child(4) { transition-delay: 0.85s; }
+
+/* 4. Interação Hover (Mouse sobre os cards) */
+.pillar, .card, .pricing-card {
+    will-change: transform, box-shadow;
+}
+
+.slide.active .pillar:hover, 
+.slide.active .card:hover, 
+.slide.active .pricing-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.1);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Suavização de retorno do Hover */
+.slide.active .pillar, 
+.slide.active .card, 
+.slide.active .pricing-card {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, background-color 0.6s ease, border-color 0.6s ease, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}

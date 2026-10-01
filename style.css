@@ -70,6 +70,7 @@ body {
     z-index: 2;
     max-width: 1000px;
     width: 100%;
+    padding-bottom: 6rem;
 }
 
 .align-center {
@@ -543,7 +544,7 @@ body {
     }
     .content {
         margin: auto 0;
-        padding: 1rem 0 3rem 0;
+        padding: 1rem 0 6rem 0;
     }
 
     /* Typography Adjustments */

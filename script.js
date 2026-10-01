@@ -48,20 +48,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Touch events for mobile swipe
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     document.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
-    }, false);
+        touchStartY = e.changedTouches[0].screenY;
+    }, {passive: true});
 
     document.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
         handleSwipe();
-    }, false);
+    }, {passive: true});
 
     function handleSwipe() {
-        if (touchEndX < touchStartX - 50) {
-            nextSlide(); // Swipe left
+        const xDiff = Math.abs(touchEndX - touchStartX);
+        const yDiff = Math.abs(touchEndY - touchStartY);
+        
+        // Só desliza slide se o movimento horizontal for bem maior que o vertical
+        if (xDiff > yDiff && xDiff > 40) {
+            if (touchEndX < touchStartX) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX) {
+                prevSlide();
+            }
         }
+    }
         if (touchEndX > touchStartX + 50) {
             prevSlide(); // Swipe right
         }

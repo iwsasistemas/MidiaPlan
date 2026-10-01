@@ -481,146 +481,54 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Layout & Scrolling */
+    .slide {
+        padding: 2rem 1.2rem;
+        align-items: flex-start; /* Evita cortar topo em telas pequenas */
+        overflow-y: auto; /* Permite rolar slides longos */
+        overflow-x: hidden;
+        height: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+    .content {
+        margin: auto 0;
+        padding: 1rem 0 3rem 0;
+    }
+
+    /* Typography Adjustments */
+    .title-main { font-size: 2rem; margin-bottom: 1rem; }
+    .title-section { font-size: 1.6rem; margin-bottom: 1.5rem; }
+    .subtitle { font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .text-body { font-size: 1.05rem; margin-bottom: 1.5rem; }
+    
+    .highlight-number { font-size: 2.2rem; }
+    .highlight-box { padding: 1.2rem; gap: 1rem; flex-direction: column; text-align: center; }
+
+    .price { font-size: 2.2rem; margin: 1rem 0; }
+    .roi-text { font-size: 1.5rem; }
+    .roi-box { padding: 1.5rem; border-width: 1px; }
+    
+    .deliverables { font-size: 1.05rem; line-height: 1.5; }
+    .deliverables li { margin-bottom: 1rem; }
+    
+    /* Grid and Containers */
+    .pillars, .grid-2, .pricing-container { 
+        grid-template-columns: 1fr; 
+        flex-direction: column; 
+        gap: 1rem;
+    }
+    
+    .pillar, .card, .pricing-card {
+        padding: 1.5rem;
+    }
+    
+    .timeline::before { left: 3px; }
+    .step-dot { left: -1.7rem; width: 10px; height: 10px; }
+    .step h4 { font-size: 1.2rem; }
+    
+    /* Hide nav */
     .nav-controls { display: none !important; }
-
-    .title-main { font-size: 2.5rem; }
-    .title-section { font-size: 2rem; }
-    .pillars, .grid-2, .pricing-container { grid-template-columns: 1fr; flex-direction: column; }
-    .text-body { font-size: 1.2rem; }
-}
-
-
-/* Neon Glowing Orbs (Discreto e Moderno) */
-.neon-orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(150px); /* Muito desfoque para ficar discreto */
-    opacity: 0.4;
-    z-index: 0;
-    pointer-events: none;
     
-}
-
-.orb-1 {
-    width: 60vw;
-    height: 60vh;
-    background: #FF007F; /* Rosa Neon */
-    top: -10vh;
-    left: -10vw;
-}
-
-.orb-2 {
-    width: 50vw;
-    height: 50vh;
-    background: #00F0FF; /* Azul/Ciano Neon */
-    bottom: -10vh;
-    right: -10vw;
-    
-    
-}
-
-.orb-3 {
-    width: 40vw;
-    height: 40vh;
-    background: #7000FF; /* Roxo Neon */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    
-}
-
-
-    33% { transform: translate(5vw, -5vh) scale(1.1); }
-    66% { transform: translate(-3vw, 8vh) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-
-/* =========================================
-   ENTRANCE ANIMATIONS & HOVER EFFECTS
-   ========================================= */
-
-/* 1. Estado inicial (escondidos e deslocados para baixo) */
-.slide .content h1,
-.slide .content h2,
-.slide .content p,
-.slide .content ul,
-.slide .content .highlight-box,
-.slide .content .contact-info,
-.slide .content .roi-box,
-.slide .pillars .pillar,
-.slide .grid-2 .card,
-.slide .pricing-container .pricing-card,
-.slide .timeline .step {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* 2. Estado ativo (aparecendo suavemente quando o slide entra) */
-.slide.active .content h1,
-.slide.active .content h2,
-.slide.active .content p,
-.slide.active .content ul,
-.slide.active .content .highlight-box,
-.slide.active .content .contact-info,
-.slide.active .content .roi-box,
-.slide.active .pillars .pillar,
-.slide.active .grid-2 .card,
-.slide.active .pricing-container .pricing-card,
-.slide.active .timeline .step {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 3. Delay em cascata (um elemento aparece após o outro) */
-.slide.active .content h1, 
-.slide.active .content h2 { transition-delay: 0.2s; }
-
-.slide.active .content p.subtitle, 
-.slide.active .content p.text-body,
-.slide.active .content .highlight-box { transition-delay: 0.4s; }
-
-.slide.active .content ul,
-.slide.active .content .contact-info,
-.slide.active .content .roi-box { transition-delay: 0.5s; }
-
-/* Cascata dos Cards / Pilares / Passos */
-.slide.active .pillars .pillar:nth-child(1),
-.slide.active .grid-2 .card:nth-child(1),
-.slide.active .pricing-container .pricing-card:nth-child(1),
-.slide.active .timeline .step:nth-child(1) { transition-delay: 0.4s; }
-
-.slide.active .pillars .pillar:nth-child(2),
-.slide.active .grid-2 .card:nth-child(2),
-.slide.active .pricing-container .pricing-card:nth-child(2),
-.slide.active .timeline .step:nth-child(2) { transition-delay: 0.55s; }
-
-.slide.active .pillars .pillar:nth-child(3),
-.slide.active .grid-2 .card:nth-child(3),
-.slide.active .timeline .step:nth-child(3) { transition-delay: 0.7s; }
-
-.slide.active .timeline .step:nth-child(4) { transition-delay: 0.85s; }
-
-/* 4. Interação Hover (Mouse sobre os cards) */
-.pillar, .card, .pricing-card {
-    will-change: transform, box-shadow;
-}
-
-.slide.active .pillar:hover, 
-.slide.active .card:hover, 
-.slide.active .pricing-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(212, 175, 55, 0.1);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(212, 175, 55, 0.3);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
-}
-
-/* Suavização de retorno do Hover */
-.slide.active .pillar, 
-.slide.active .card, 
-.slide.active .pricing-card {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, background-color 0.6s ease, border-color 0.6s ease, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    /* WhatsApp Button */
+    .btn-primary { padding: 1rem; font-size: 1rem; width: 100%; text-align: center; display: block; }
 }

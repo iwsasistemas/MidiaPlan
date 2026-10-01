@@ -76,9 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-        if (touchEndX > touchStartX + 50) {
-            prevSlide(); // Swipe right
-        }
-    }
 });
 

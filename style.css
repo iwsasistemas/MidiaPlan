@@ -461,6 +461,52 @@ body {
     opacity: 0.8;
 }
 
+
+/* Text Effects & Highlights */
+.text-highlight-gold {
+    color: var(--color-gold);
+    font-weight: 800;
+}
+.text-highlight-green {
+    color: var(--color-green);
+    font-weight: 800;
+}
+.text-gradient {
+    background: linear-gradient(90deg, #D4AF37, #FFF5A0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    display: inline-block;
+}
+.text-gradient-green {
+    background: linear-gradient(90deg, #2E8B57, #50C878);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    display: inline-block;
+}
+.text-underline {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    font-weight: 800;
+}
+.text-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -2%;
+    width: 104%;
+    height: 35%;
+    background-color: rgba(212, 175, 55, 0.4);
+    z-index: -1;
+    border-radius: 2px;
+    transform: rotate(-1deg);
+}
+.slide-light .text-underline::after {
+    background-color: rgba(46, 139, 87, 0.3);
+}
+
 /* Background Animations */
 .animated-bg {
     position: absolute;
